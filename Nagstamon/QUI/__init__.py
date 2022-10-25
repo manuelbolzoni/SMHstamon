@@ -3572,14 +3572,15 @@ class TreeView(QTreeView):
                 # action to signalmapper
                 self.signalmapper_action_menu.setMapping(action_menuentry, a)
                 action_menuentry.triggered.connect(self.signalmapper_action_menu.map)
+                
             actions_list.sort(key=str.lower)
 
             del action, item_visible
 
         # create and add default actions
-        action_edit_actions = QAction('Edit actions...', self)
-        action_edit_actions.triggered.connect(self.action_edit_actions)
-        self.action_menu.addAction(action_edit_actions)
+        #action_edit_actions = QAction('Edit actions...', self)
+        #action_edit_actions.triggered.connect(self.action_edit_actions)
+        #self.action_menu.addAction(action_edit_actions)
         # put actions into menu after separator
 
         self.action_menu.addSeparator()
@@ -4788,8 +4789,8 @@ class Dialog_Settings(Dialog):
 
         # connect check-for-updates button to update check
         # self.window.button_check_for_new_version_now.clicked.connect(check_version.check)
-        self.window.button_check_for_new_version_now.clicked.connect(self.button_check_for_new_version_clicked)
-        self.check_for_new_version.connect(check_version.check)
+        #self.window.button_check_for_new_version_now.clicked.connect(self.button_check_for_new_version_clicked)
+        #self.check_for_new_version.connect(check_version.check)
 
         # avoid offset spinbox if offest is not enabled
         self.window.input_radiobutton_fullscreen.clicked.connect(self.toggle_systray_icon_offset)
@@ -5761,21 +5762,23 @@ class Dialog_Server(Dialog):
             self.window.input_lineedit_map_to_warning: ['Alertmanager'],
             self.window.label_map_to_critical: ['Alertmanager'],
             self.window.input_lineedit_map_to_critical: ['Alertmanager'],
-            self.window.input_lineedit_password:NOT_SMHUB,
-            self.window.input_lineedit_username:NOT_SMHUB,
-            self.window.label_username:NOT_SMHUB,
-            self.window.label_password:NOT_SMHUB,
+            #self.window.input_lineedit_password:NOT_SMHUB,
+            #self.window.input_lineedit_username:NOT_SMHUB,
+#            self.window.label_username:NOT_SMHUB,
+#            self.window.label_password:NOT_SMHUB,
             self.window.input_checkbox_show_options:NOT_SMHUB,
             self.window.input_checkbox_save_password:NOT_SMHUB
         }
 
         # to be used when selecting authentication method Kerberos
         self.AUTHENTICATION_WIDGETS = [
-            self.window.label_username,
-            self.window.input_lineedit_username,
-            self.window.label_password,
-            self.window.input_lineedit_password,
-            self.window.input_checkbox_save_password]
+            #self.window.label_username,
+            #self.window.input_lineedit_username,
+            #self.window.label_password,
+            #self.window.input_lineedit_password,
+            #self.window.input_checkbox_save_password
+            # 
+            ]
 
         self.AUTHENTICATION_ECP_WIDGETS = [
             self.window.label_idp_ecp_endpoint,
@@ -5961,10 +5964,12 @@ class Dialog_Server(Dialog):
                 (self.mode in ['new', 'copy'] or
                  self.mode == 'edit' and self.server_conf != conf.servers[self.window.input_lineedit_name.text()]):
             # cry if duplicate name exists
-            QMessageBox.Icon.Critical(self.window, 'Nagstamon',
+            QMessageBox.critical(self.window, 'Nagstamon',
                                       'The monitor server name <b>%s</b> is already used.' %
                                       (self.window.input_lineedit_name.text()),
                                       QMessageBox.StandardButton.Ok)
+            
+            
         else:
             # get configuration from UI
             for widget in self.window.__dict__:
@@ -6222,7 +6227,7 @@ class Dialog_Action(Dialog):
                 (self.mode in ['new', 'copy'] or
                  self.mode == 'edit' and self.action_conf != conf.actions[self.window.input_lineedit_name.text()]):
             # cry if duplicate name exists
-            QMessageBox.Icon.Critical(self.window, 'Nagstamon',
+            QMessageBox.critical(self.window, 'Nagstamon',
                                       'The action name <b>%s</b> is already used.' %
                                       (self.window.input_lineedit_name.text()),
                                       QMessageBox.StandardButton.Ok)
@@ -6643,8 +6648,8 @@ class Dialog_Authentication(Dialog):
                 self.window.label_autologin_key.hide()
 
             # set existing values
-            self.window.input_lineedit_username.setText(self.server.username)
-            self.window.input_lineedit_password.setText(self.server.password)
+            #self.window.input_lineedit_username.setText(self.server.username)
+            #self.window.input_lineedit_password.setText(self.server.password)
             self.window.input_checkbox_save_password.setChecked(conf.servers[self.server.name].save_password)
 
     @Slot(str)
@@ -6668,8 +6673,8 @@ class Dialog_Authentication(Dialog):
         # close window fist to avoid lagging UI
         self.window.close()
 
-        self.server.username = self.window.input_lineedit_username.text()
-        self.server.password = self.window.input_lineedit_password.text()
+       # self.server.username = self.window.input_lineedit_username.text()
+       # self.server.password = self.window.input_lineedit_password.text()
         self.server.refresh_authentication = False
 
         # store password if it should be saved
@@ -6702,24 +6707,24 @@ class Dialog_Authentication(Dialog):
         """
             toolge autologin option for Centreon
         """
-        if self.window.input_checkbox_use_autologin.isChecked():
-            self.window.label_username.hide()
-            self.window.label_password.hide()
-            self.window.input_lineedit_username.hide()
-            self.window.input_lineedit_password.hide()
-            self.window.input_checkbox_save_password.hide()
+       # if self.window.input_checkbox_use_autologin.isChecked():
+            #self.window.label_username.hide()
+            #self.window.label_password.hide()
+            #self.window.input_lineedit_username.hide()
+            #self.window.input_lineedit_password.hide()
+            #self.window.input_checkbox_save_password.hide()
 
-            self.window.label_autologin_key.show()
-            self.window.input_lineedit_autologin_key.show()
-        else:
-            self.window.label_username.show()
-            self.window.label_password.show()
-            self.window.input_lineedit_username.show()
-            self.window.input_lineedit_password.show()
-            self.window.input_checkbox_save_password.show()
-
-            self.window.label_autologin_key.hide()
-            self.window.input_lineedit_autologin_key.hide()
+            #self.window.label_autologin_key.show()
+            #self.window.input_lineedit_autologin_key.show()
+        #else:
+            #self.window.label_username.show()
+            #self.window.label_password.show()
+            #self.window.input_lineedit_username.show()
+            #self.window.input_lineedit_password.show()
+            #self.window.input_checkbox_save_password.show()
+#
+            #self.window.label_autologin_key.hide()
+            #self.window.input_lineedit_autologin_key.hide()
 
         # adjust dialog window size after UI changes
         self.window.adjustSize()
@@ -6771,12 +6776,12 @@ class Dialog_About(Dialog):
         self.window.vbox_about.insertWidget(1, logo, 0, Qt.AlignmentFlag.AlignHCenter)
         # update version information
         self.window.label_nagstamon.setText('<h1>{0} {1}</h1>'.format(AppInfo.NAME, AppInfo.VERSION))
-        self.window.label_nagstamon_long.setText('<h2>Nagios¹ status monitor for your desktop</2>')
+        self.window.label_nagstamon_long.setText('<h2>SMHub status monitor for your desktop</2>')
         self.window.label_copyright.setText(AppInfo.COPYRIGHT)
         self.window.label_website.setText('<a href={0}>{0}</a>'.format(AppInfo.WEBSITE))
         self.window.label_website.setOpenExternalLinks(True)
         self.window.label_versions.setText(f'Python: {platform.python_version()}, Qt: {QT_VERSION_STR}')
-        self.window.label_footnote.setText('<small>¹ plus Checkmk, Op5, Icinga, Centreon and more</small>')
+        
 
         # fill in license information
         license_file = open('{0}{1}LICENSE'.format(RESOURCES, os.sep))
@@ -6912,23 +6917,24 @@ class CheckVersion(QObject):
                                                no_auth=True)
                     # stop searching the available download URLs
                     if response.error == "" and not response.result.startswith('<'):
-                        latest_version = response.result.strip()
+                        #latest_version = response.result.strip()
                         break
                 # ignore TLS error in case it was caused by requesting latest version - not important for monitoring
                 server.tls_error = False
 
                 # stop searching via enabled servers
                 if response.error == "" and not response.result.startswith('<'):
-                    latest_version = response.result.strip()
+                    #latest_version = response.result.strip()
                     break
 
+            
             # compose message according to version information
-            if latest_version != 'unavailable':
-                if latest_version == AppInfo.VERSION:
-                    message = 'You are using the latest version <b>Nagstamon {0}</b>.'.format(AppInfo.VERSION)
-                elif latest_version != AppInfo.VERSION:
-                    message = 'The new version <b>Nagstamon {0}</b> is available.<p>' \
-                              'Get it at <a href={1}>{1}</a>.'.format(latest_version, AppInfo.WEBSITE + '/download')
+            #if latest_version != 'unavailable':
+            #    if latest_version == AppInfo.VERSION:
+            #        message = 'You are using the latest version <b>Nagstamon {0}</b>.'.format(AppInfo.VERSION)
+            #    elif latest_version != AppInfo.VERSION:
+            #        message = 'The new version <b>Nagstamon {0}</b> is available.<p>' \
+            #                  'Get it at <a href={1}>{1}</a>.'.format(latest_version, AppInfo.WEBSITE + '/download')
 
             # check if there is anything to tell
             if message != '':

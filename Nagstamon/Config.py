@@ -124,11 +124,11 @@ class AppInfo(object):
     """
         contains app information previously located in GUI.py
     """
-    NAME = 'Nagstamon'
-    VERSION = '3.9-20220619'
-    WEBSITE = 'https://nagstamon.de'
+    NAME = 'SMHstamon'
+    VERSION = '1.0'
+    WEBSITE = 'https://github.com/manuelbolzoni/SMHstamon'
     COPYRIGHT = '©2008-2022 Henri Wahl et al.'
-    COMMENTS = 'Nagios status monitor for your desktop'
+    COMMENTS = 'SMHub status monitor for your desktop'
     # dict of servers to offer for downloads if an update is available
     DOWNLOAD_SERVERS = {'nagstamon.de': 'https://github.com/HenriWahl/Nagstamon/releases'}
     # version URL depends on version string
@@ -431,8 +431,8 @@ class Config(object):
             self.unconfigured = False
 
         # Load actions if Nagstamon is not unconfigured, otherwise load defaults
-        if self.unconfigured is True:
-            self.actions = self._DefaultActions()
+        #if self.unconfigured is True:
+        self.actions = self._DefaultActions()
 
         # do some conversion stuff needed because of config changes and code cleanup
         self._LegacyAdjustments()
@@ -842,7 +842,8 @@ class Config(object):
                                          type="browser",
                                          string="mailto:servicedesk@my.org?subject=Monitor alert: $HOST$ - $SERVICE$ - $STATUS-INFO$&body=Please help!.%0d%0aBest regards from Nagstamon")
 
-        return defaultactions
+        #return defaultactions
+        return {}
 
     def _LegacyAdjustments(self):
         # mere cosmetics but might be more clear for future additions - changing any "nagios"-setting to "monitor"

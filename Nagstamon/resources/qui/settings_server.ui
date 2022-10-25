@@ -41,19 +41,7 @@
    <property name="verticalSpacing">
     <number>2</number>
    </property>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_password">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Password:</string>
-     </property>
-    </widget>
-   </item>
+   
    <item row="4" column="2" colspan="2">
     <widget class="QLineEdit" name="input_lineedit_monitor_url">
      <property name="inputMask">
@@ -77,13 +65,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
-    <widget class="QLineEdit" name="input_lineedit_username">
-     <property name="text">
-      <string>username</string>
-     </property>
-    </widget>
-   </item>
+  
    <item row="5" column="2" colspan="2">
     <widget class="QLineEdit" name="input_lineedit_monitor_cgi_url">
      <property name="text">
@@ -94,16 +76,7 @@
    <item row="1" column="2">
     <widget class="QComboBox" name="input_combobox_type"/>
    </item>
-   <item row="8" column="2">
-    <widget class="QLineEdit" name="input_lineedit_password">
-     <property name="text">
-      <string>1234567890</string>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-    </widget>
-   </item>
+
    <item row="17" column="0">
     <widget class="QCheckBox" name="input_checkbox_use_proxy">
      <property name="text">
@@ -234,19 +207,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_username">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Username:</string>
-     </property>
-    </widget>
-   </item>
+   
    <item row="4" column="0">
     <widget class="QLabel" name="label_monitor_url">
      <property name="sizePolicy">
@@ -711,9 +672,6 @@
   <tabstop>input_lineedit_name</tabstop>
   <tabstop>input_lineedit_monitor_url</tabstop>
   <tabstop>input_lineedit_monitor_cgi_url</tabstop>
-  <tabstop>input_lineedit_username</tabstop>
-  <tabstop>input_lineedit_password</tabstop>
-  <tabstop>input_checkbox_save_password</tabstop>
   <tabstop>input_checkbox_use_proxy</tabstop>
   <tabstop>input_lineedit_proxy_address</tabstop>
   <tabstop>input_lineedit_proxy_username</tabstop>

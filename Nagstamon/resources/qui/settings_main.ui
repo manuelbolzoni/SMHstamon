@@ -265,13 +265,7 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QCheckBox" name="input_checkbox_check_for_new_version">
-           <property name="text">
-            <string>Check for new version at startup</string>
-           </property>
-          </widget>
-         </item>
+       
          <item>
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
@@ -285,13 +279,7 @@
            </property>
           </spacer>
          </item>
-         <item>
-          <widget class="QPushButton" name="button_check_for_new_version_now">
-           <property name="text">
-            <string>Check for new version now</string>
-           </property>
-          </widget>
-         </item>
+     
         </layout>
        </item>
        <item row="0" column="1">
@@ -3170,8 +3158,6 @@
   <tabstop>input_checkbox_debug_mode</tabstop>
   <tabstop>input_checkbox_debug_to_file</tabstop>
   <tabstop>input_lineedit_debug_file</tabstop>
-  <tabstop>input_checkbox_check_for_new_version</tabstop>
-  <tabstop>button_check_for_new_version_now</tabstop>
   <tabstop>input_radiobutton_long_display</tabstop>
   <tabstop>input_radiobutton_short_display</tabstop>
   <tabstop>input_radiobutton_statusbar_floating</tabstop>
