@@ -232,8 +232,8 @@ def create_server(server=None):
 #                SnagViewServer, PrometheusServer, AlertmanagerServer, ZabbixProblemBasedServer]
 # we use these servers conditionally if modules are available only
 servers_list = [SMHubServer]
-if icinga2api_is_available is True:
-    servers_list.append(Icinga2APIServer)
+#if icinga2api_is_available is True:
+#    servers_list.append(Icinga2APIServer)
 
 for server in servers_list:
     register_server(server)
