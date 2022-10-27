@@ -217,7 +217,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Monitor URL:</string>
+      <string>API JSON:</string>
      </property>
     </widget>
    </item>
