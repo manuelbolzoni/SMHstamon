@@ -62,10 +62,10 @@ if OS != OS_WINDOWS:
         from requests_gssapi import HTTPSPNEGOAuth as HTTPSKerberos
     except ImportError:
         from requests_kerberos import HTTPKerberosAuth as HTTPSKerberos
-else:
-    # requests_gssapi needs installation of KfW - Kerberos for Windows
-    # requests_kerberoes doesn't
-    from requests_kerberos import HTTPKerberosAuth as HTTPSKerberos
+#else:
+#    # requests_gssapi needs installation of KfW - Kerberos for Windows
+#    # requests_kerberoes doesn't
+#    from requests_kerberos import HTTPKerberosAuth as HTTPSKerberos
 
 # disable annoying SubjectAltNameWarning warnings
 try:
@@ -282,8 +282,8 @@ class GenericServer(object):
             session.auth = requests.auth.HTTPDigestAuth(self.username, self.password)
         elif self.authentication == 'ecp':
             session.auth = HTTPECPAuth(self.idp_ecp_endpoint, username=self.username, password=self.password)
-        elif self.authentication == 'kerberos':
-            session.auth = HTTPSKerberos()
+        #elif self.authentication == 'kerberos':
+        #    session.auth = HTTPSKerberos()
 
         # default to check TLS validity
         if self.ignore_cert:
