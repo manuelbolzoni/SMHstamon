@@ -2870,11 +2870,11 @@ class ServerVBox(QVBoxLayout):
         self.update_label()
         self.button_monitor = PushButton_BrowserURL(text='Monitor', parent=parent, server=self.server,
                                                     url_type='monitor')
-        self.button_hosts = PushButton_BrowserURL(text='Hosts', parent=parent, server=self.server, url_type='hosts')
-        self.button_services = PushButton_BrowserURL(text='Services', parent=parent, server=self.server,
-                                                     url_type='services')
-        self.button_history = PushButton_BrowserURL(text='History', parent=parent, server=self.server,
-                                                    url_type='history')
+        #self.button_hosts = PushButton_BrowserURL(text='Hosts', parent=parent, server=self.server, url_type='hosts')
+        #self.button_services = PushButton_BrowserURL(text='Services', parent=parent, server=self.server,
+        #                                             url_type='services')
+        #self.button_history = PushButton_BrowserURL(text='History', parent=parent, server=self.server,
+        #                                            url_type='history')
         self.button_edit = Button('Edit', parent=parent)
 
         # use label instead of spacer to be clickable
@@ -2889,16 +2889,16 @@ class ServerVBox(QVBoxLayout):
         self.button_fix_tls_error = QPushButton('Fix error', parent=parent)
 
         self.button_monitor.clicked.connect(self.button_monitor.open_url)
-        self.button_hosts.clicked.connect(self.button_hosts.open_url)
-        self.button_services.clicked.connect(self.button_services.open_url)
-        self.button_history.clicked.connect(self.button_history.open_url)
+        #self.button_hosts.clicked.connect(self.button_hosts.open_url)
+        #self.button_services.clicked.connect(self.button_services.open_url)
+        #self.button_history.clicked.connect(self.button_history.open_url)
         self.button_edit.clicked.connect(self.edit_server)
 
         self.header.addWidget(self.label)
         self.header.addWidget(self.button_monitor)
-        self.header.addWidget(self.button_hosts)
-        self.header.addWidget(self.button_services)
-        self.header.addWidget(self.button_history)
+        #self.header.addWidget(self.button_hosts)
+        #self.header.addWidget(self.button_services)
+        #self.header.addWidget(self.button_history)
         self.header.addWidget(self.button_edit)
 
         self.header.addWidget(self.label_stretcher)
@@ -2960,9 +2960,9 @@ class ServerVBox(QVBoxLayout):
         """
         self.label.show()
         self.button_monitor.show()
-        self.button_hosts.show()
-        self.button_services.show()
-        self.button_history.show()
+        #self.button_hosts.show()
+        #self.button_services.show()
+        #self.button_history.show()
         self.button_edit.show()
         self.label_status.show()
         self.label_stretcher.show()
@@ -2979,9 +2979,9 @@ class ServerVBox(QVBoxLayout):
         """
         self.label.show()
         self.button_monitor.show()
-        self.button_hosts.show()
-        self.button_services.show()
-        self.button_history.show()
+        #self.button_hosts.show()
+        #self.button_services.show()
+        #self.button_history.show()
         self.button_edit.show()
         self.label_status.show()
         self.label_stretcher.show()
@@ -2998,9 +2998,9 @@ class ServerVBox(QVBoxLayout):
         """
         self.label.hide()
         self.button_monitor.hide()
-        self.button_hosts.hide()
-        self.button_services.hide()
-        self.button_history.hide()
+        #self.button_hosts.hide()
+        #self.button_services.hide()
+        #self.button_history.hide()
         self.button_edit.hide()
         self.label_status.hide()
         self.label_stretcher.hide()
@@ -3018,9 +3018,9 @@ class ServerVBox(QVBoxLayout):
         """
         for widget in (self.label,
                        self.button_monitor,
-                       self.button_hosts,
-                       self.button_services,
-                       self.button_history,
+                       #self.button_hosts,
+                       #self.button_services,
+                       #self.button_history,
                        self.button_edit,
                        self.label_status,
                        self.label_stretcher,
