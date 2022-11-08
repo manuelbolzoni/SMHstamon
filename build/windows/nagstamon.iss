@@ -1,8 +1,8 @@
 [Setup]
-AppName=Nagstamon
-AppVerName=Nagstamon {#version}
+AppName=SMHstamon
+AppVerName=SMHstamon {#version}
 DefaultDirName={pf}\Nagstamon
-DefaultGroupName=Nagstamon
+DefaultGroupName=SMHstamon
 AlwaysUsePersonalGroup=false
 ShowLanguageDialog=no
 SetupIconFile={#resources}\nagstamon.ico
@@ -13,8 +13,8 @@ UsePreviousAppDir=false
 AppID={{44F7CFFB-4776-4DA4-9930-A07178069517}
 UninstallRestartComputer=false
 VersionInfoVersion={#version_is}
-VersionInfoCopyright=Henri Wahl
-VersionInfoProductName=Nagstamon
+VersionInfoCopyright=Simone De Luca
+VersionInfoProductName=SMHstamon
 VersionInfoProductVersion={#version_is}
 InternalCompressLevel=max
 Compression=lzma
