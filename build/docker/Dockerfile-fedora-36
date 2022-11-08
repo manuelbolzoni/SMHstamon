@@ -1,5 +1,5 @@
 FROM fedora:36
-LABEL maintainer=henri@nagstamon.de
+LABEL maintainer=simone.deluca@retelit.it
 
 RUN dnf -y install desktop-file-utils \
                    git \
