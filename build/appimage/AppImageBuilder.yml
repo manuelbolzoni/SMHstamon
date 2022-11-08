@@ -13,10 +13,10 @@ script:
 AppDir:
   path: ./AppDir
   app_info:
-    id: nagstamon
-    name: Nagstamon
+    id: smhstamon
+    name: SMHstamon
     icon: nagstamon
-    version: '3.9'
+    version: '0.1'
     exec: usr/bin/python3
     exec_args: "${APPDIR}/app/nagstamon.py $@"
   apt:
