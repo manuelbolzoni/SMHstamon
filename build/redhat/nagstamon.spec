@@ -1,15 +1,15 @@
-%global gitdate 20160602
-%global commit 7139844d1a8109ba45f03601293ab70050b7dc94
+%global gitdate <null>
+%global commit <null>
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-Name:     nagstamon
-Version:  3.1.99
+Name:     smhstamon
+Version:  0.1
 Release:  0.1.%{gitdate}git%{shortcommit}%{?dist}
-Summary:  Nagios status monitor for desktop
+Summary:  SMHUB status monitor for desktop
 
 License:  GPLv2+
-URL:      https://nagstamon.de
-Source0:  https://github.com/HenriWahl/Nagstamon/archive/%{commit}/nagstamon-%{commit}.tar.gz
+URL:      https://smhub.retelit.it
+Source0:  https://github.com/delu86/SMHstamon/archive/%{commit}/nagstamon-%{commit}.tar.gz
 
 BuildArch:     noarch
 BuildRequires: python3-devel
