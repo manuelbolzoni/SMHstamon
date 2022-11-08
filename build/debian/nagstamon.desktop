@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Nagstamon
-Comment=Nagios status monitor 
+Name=SMHstamon
+Comment=SMHUB status monitor 
 Icon=nagstamon
 Exec=nagstamon
 Terminal=false
