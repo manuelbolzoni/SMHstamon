@@ -126,8 +126,8 @@ class AppInfo(object):
     """
     NAME = 'SMHstamon'
     VERSION = '1.0'
-    WEBSITE = 'https://github.com/manuelbolzoni/SMHstamon'
-    COPYRIGHT = '©2008-2022 Henri Wahl et al.'
+    WEBSITE = ''
+    COPYRIGHT = ''
     COMMENTS = 'SMHub status monitor for your desktop'
     # dict of servers to offer for downloads if an update is available
     DOWNLOAD_SERVERS = {'nagstamon.de': 'https://github.com/HenriWahl/Nagstamon/releases'}

@@ -994,7 +994,7 @@ class StatusWindow(QWidget):
             self.setAttribute(Qt.WidgetAttribute.WA_MacAlwaysShowToolWindow)
 
         self.setWindowTitle(AppInfo.NAME)
-        self.setWindowIcon(QIcon('{0}{1}nagstamon.svg'.format(RESOURCES, os.sep)))
+        self.setWindowIcon(QIcon('{0}{1}smhstamon.svg'.format(RESOURCES, os.sep)))
 
         self.vbox = QVBoxLayout(self)  # global VBox
         self.vbox.setSpacing(0)  # no spacing
@@ -2477,7 +2477,7 @@ class StatusBar(QWidget):
         self.labels_reset.connect(self.label_message.reset)
 
         # derive logo dimensions from status label
-        self.logo = NagstamonLogo('{0}{1}nagstamon_logo_bar.svg'.format(RESOURCES, os.sep),
+        self.logo = NagstamonLogo('{0}{1}smhstamon_logo_bar.svg'.format(RESOURCES, os.sep),
                                   self.color_labels['OK'].fontMetrics().height(),
                                   self.color_labels['OK'].fontMetrics().height(),
                                   parent=parent)
@@ -2686,7 +2686,7 @@ class TopArea(QWidget):
         self.create_icons()
 
         # top button box
-        self.logo = NagstamonLogo(self.icons['nagstamon_logo_toparea'], width=150, height=42, parent=self)
+        self.logo = NagstamonLogo(self.icons['smhstamon_logo_toparea'], width=150, height=42, parent=self)
         self.label_version = DraggableLabel(text=AppInfo.VERSION, parent=self)
         self.label_empty_space = DraggableLabel(text='', parent=self)
         self.label_empty_space.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Ignored)
@@ -2739,7 +2739,7 @@ class TopArea(QWidget):
         # get rgb values of current foreground color to be used for SVG icons (menu)
         r, g, b, a = APP.palette().color(QPalette.ColorRole.Text).getRgb()
 
-        for icon in 'nagstamon_logo_toparea', 'close', 'menu':
+        for icon in 'smhstamon_logo_toparea', 'close', 'menu':
             # get template from file
             svg_template_file = open('{0}{1}{2}_template.svg'.format(RESOURCES, os.sep, icon))
             svg_template_xml = svg_template_file.readlines()
@@ -2769,7 +2769,7 @@ class TopArea(QWidget):
             svg_painter.end()
 
             # two ways...
-            if icon == 'nagstamon_logo_toparea':
+            if icon == 'smhstamon_logo_toparea':
                 # first get a base64 version of the SVG
                 svg_base64 = base64.b64encode(bytes(''.join(svg_icon_xml), 'utf8'))
                 # create a QByteArray for NagstamonLogo aka QSvgWidget
@@ -6771,7 +6771,7 @@ class Dialog_About(Dialog):
     def __init__(self, dialog):
         Dialog.__init__(self, dialog)
         # first add the logo on top - no idea how to achive in Qt Designer
-        logo = QSvgWidget('{0}{1}nagstamon.svg'.format(RESOURCES, os.sep))
+        logo = QSvgWidget('{0}{1}smhstamon.svg'.format(RESOURCES, os.sep))
         logo.setFixedSize(100, 100)
         self.window.vbox_about.insertWidget(1, logo, 0, Qt.AlignmentFlag.AlignHCenter)
         # update version information
@@ -6973,7 +6973,7 @@ class DBus(QObject):
         # use Nagstamon image if icon is not available from system
         # see https://developer.gnome.org/notification-spec/#icons-and-images
         # self.hints = {'image-path': '%s%snagstamon.svg' % (RESOURCES, os.sep)}
-        self.hints = {'image-path': '{0}{1}nagstamon.svg'.format(RESOURCES, os.sep)}
+        self.hints = {'image-path': '{0}{1}smhstamon.svg'.format(RESOURCES, os.sep)}
 
         if not OS in OS_NON_LINUX and DBUS_AVAILABLE:
             if 'dbus' in sys.modules:
