@@ -84,9 +84,9 @@ def winmain():
     subprocess.call(['{0}\\Scripts\\pyinstaller'.format(sys.base_prefix),
                      '--noconfirm',
                      '--add-data=..\\Nagstamon/resources;resources',
-                     '--icon=..\\Nagstamon\\resources\\nagstamon.ico',
+                     '--icon=..\\Nagstamon\\resources\\smhstamon.ico',
                      '--windowed',
-                     '--name=Nagstamon',
+                     '--name=SMHstamon',
                      '--hidden-import=PyQt5.uic.plugins',
                      '--hidden-import=win32timezone',
                      '..\\nagstamon.py'], shell=True)

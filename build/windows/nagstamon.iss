@@ -5,10 +5,10 @@ DefaultDirName={pf}\Nagstamon
 DefaultGroupName=SMHstamon
 AlwaysUsePersonalGroup=false
 ShowLanguageDialog=no
-SetupIconFile={#resources}\nagstamon.ico
+SetupIconFile={#resources}\smhstamon.ico
 UsePreviousGroup=false
 OutputBaseFilename=Nagstamon-{#version}-win{#arch}_setup
-UninstallDisplayIcon={app}\resources\nagstamon.ico
+UninstallDisplayIcon={app}\resources\smhstamon.ico
 UsePreviousAppDir=false
 AppID={{44F7CFFB-4776-4DA4-9930-A07178069517}
 UninstallRestartComputer=false
@@ -24,8 +24,8 @@ ArchitecturesAllowed={#archs_allowed}
 ArchitecturesInstallIn64BitMode=x64
 CloseApplications=no
 [Icons]
-Name: {group}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\nagstamon.ico; IconIndex: 0
-Name: {commonstartup}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\nagstamon.ico; IconIndex: 0
+Name: {group}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
+Name: {commonstartup}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
 [Files]
 Source: "*"; DestDir: {app}; Flags: recursesubdirs createallsubdirs ignoreversion; BeforeInstall: KillRunningNagstamon()
 [Tasks]

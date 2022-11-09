@@ -239,7 +239,7 @@ NUMBER_OF_DISPLAY_CHANGES = 0
 WINDOW_FLAGS = Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint | Qt.WindowType.Tool
 
 # icon for dialogs
-ICON = QIcon('{0}{1}nagstamon.ico'.format(RESOURCES, os.sep))
+ICON = QIcon('{0}{1}smhstamon.ico'.format(RESOURCES, os.sep))
 
 # set style for tooltips globally - to sad not all properties can be set here
 APP.setStyleSheet('''QToolTip { margin: 3px;
