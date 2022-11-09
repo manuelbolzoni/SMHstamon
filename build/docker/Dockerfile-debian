@@ -1,5 +1,5 @@
 FROM debian:8
-LABEL maintainer=henri@nagstamon.de
+LABEL maintainer=simone.deluca@retelit.it
 
 RUN apt -y update
 RUN apt -y install apt-utils
