@@ -2868,8 +2868,8 @@ class ServerVBox(QVBoxLayout):
         # self.label = QLabel(parent=parent)
         self.label = ClosingLabel(parent=parent)
         self.update_label()
-        self.button_monitor = PushButton_BrowserURL(text='Monitor', parent=parent, server=self.server,
-                                                    url_type='monitor')
+        #self.button_monitor = PushButton_BrowserURL(text='Monitor', parent=parent, server=self.server,
+        #                                            url_type='monitor')
         #self.button_hosts = PushButton_BrowserURL(text='Hosts', parent=parent, server=self.server, url_type='hosts')
         #self.button_services = PushButton_BrowserURL(text='Services', parent=parent, server=self.server,
         #                                             url_type='services')
@@ -2888,14 +2888,14 @@ class ServerVBox(QVBoxLayout):
 
         self.button_fix_tls_error = QPushButton('Fix error', parent=parent)
 
-        self.button_monitor.clicked.connect(self.button_monitor.open_url)
+        #self.button_monitor.clicked.connect(self.button_monitor.open_url)
         #self.button_hosts.clicked.connect(self.button_hosts.open_url)
         #self.button_services.clicked.connect(self.button_services.open_url)
         #self.button_history.clicked.connect(self.button_history.open_url)
         self.button_edit.clicked.connect(self.edit_server)
 
         self.header.addWidget(self.label)
-        self.header.addWidget(self.button_monitor)
+        #self.header.addWidget(self.button_monitor)
         #self.header.addWidget(self.button_hosts)
         #self.header.addWidget(self.button_services)
         #self.header.addWidget(self.button_history)
@@ -2945,12 +2945,10 @@ class ServerVBox(QVBoxLayout):
             return summarized real height of hbox items and table
         """
         height = self.table.get_real_height()
-        if self.label.isVisible() and self.button_monitor.isVisible():
+        #if self.label.isVisible() and self.button_monitor.isVisible():
+        if self.label.isVisible() :
             # compare item heights, decide to take the largest and add 2 time the MARGIN (top and bottom)
-            if self.label.sizeHint().height() > self.button_monitor.sizeHint().height():
-                height += self.label.sizeHint().height() + 2
-            else:
-                height += self.button_monitor.sizeHint().height() + 2
+            height += self.label.sizeHint().height() + 2
         return height
 
     @Slot()
@@ -2959,7 +2957,7 @@ class ServerVBox(QVBoxLayout):
             show all items in server vbox except the table - not needed if empty
         """
         self.label.show()
-        self.button_monitor.show()
+        #self.button_monitor.show()
         #self.button_hosts.show()
         #self.button_services.show()
         #self.button_history.show()
@@ -2978,7 +2976,7 @@ class ServerVBox(QVBoxLayout):
             show all items in server vbox except the table - not needed if empty or major connection problem
         """
         self.label.show()
-        self.button_monitor.show()
+        #self.button_monitor.show()
         #self.button_hosts.show()
         #self.button_services.show()
         #self.button_history.show()
