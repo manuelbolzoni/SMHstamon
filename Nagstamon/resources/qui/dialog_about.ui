@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>About Nagstamon</string>
+   <string>About SMHstamon</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
