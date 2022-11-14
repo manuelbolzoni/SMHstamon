@@ -68,8 +68,8 @@ def winmain():
     print('VERSION_IS:', VERSION_IS)
 
     ISCC = r'{0}{1}Inno Setup 6{1}iscc.exe'.format(os.environ['PROGRAMFILES{0}'.format(ARCH_OPTS[ARCH][2])], os.sep)
-    DIR_BUILD_EXE = '{0}{1}dist{1}Nagstamon'.format(CURRENT_DIR, os.sep, ARCH_OPTS[ARCH][0], PYTHON_VERSION)
-    DIR_BUILD_NAGSTAMON = '{0}{1}dist{1}Nagstamon-{2}-win{3}'.format(CURRENT_DIR, os.sep, VERSION, ARCH)
+    DIR_BUILD_EXE = '{0}{1}dist{1}SMHstamon'.format(CURRENT_DIR, os.sep, ARCH_OPTS[ARCH][0], PYTHON_VERSION)
+    DIR_BUILD_NAGSTAMON = '{0}{1}dist{1}SMHstamon-{2}-win{3}'.format(CURRENT_DIR, os.sep, VERSION, ARCH)
     FILE_ZIP = '{0}.zip'.format(DIR_BUILD_NAGSTAMON)
 
     # clean older binaries
@@ -89,7 +89,7 @@ def winmain():
                      '--name=SMHstamon',
                      '--hidden-import=PyQt5.uic.plugins',
                      '--hidden-import=win32timezone',
-                     '..\\nagstamon.py'], shell=True)
+                     '..\\smhstamon.py'], shell=True)
 
     # rename output
     os.rename(DIR_BUILD_EXE, DIR_BUILD_NAGSTAMON)
@@ -159,7 +159,7 @@ def debmain():
     os.chdir(NAGSTAMON_DIR)
 
     # masquerade .py file as .py-less
-    shutil.copyfile('nagstamon.py', 'nagstamon')
+    shutil.copyfile('smhstamon.py', 'smhstamon')
 
     shutil.copytree('{0}{1}debian{1}'.format(CURRENT_DIR, os.sep), '{0}{1}debian'.format(NAGSTAMON_DIR, os.sep))
 
@@ -182,7 +182,7 @@ def rpmmain():
     os.chdir(NAGSTAMON_DIR)
 
     # masquerade .py file as .py-less
-    shutil.copyfile('nagstamon.py', 'nagstamon')
+    shutil.copyfile('smhstamon.py', 'smhstamon')
 
     # workaround for manpage gzipping bug in bdist_rpm
     import gzip
