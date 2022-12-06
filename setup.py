@@ -47,7 +47,7 @@ if OS not in ['Windows', 'Darwin']:
     NAME = NAME.lower()
 VERSION = AppInfo.VERSION.replace('-', '.') + '.' + DIST + DIST_VERSION
 
-NAGSTAMON_SCRIPT = 'nagstamon.py'
+NAGSTAMON_SCRIPT = 'smhstamon.py'
 
 from setuptools import setup
 
@@ -107,13 +107,13 @@ bdist_rpm_options = dict(requires='python3 '
 setup(name=NAME,
       version=VERSION,
       license='GNU GPL v2',
-      description='Nagios status monitor for desktop',
-      long_description='Nagstamon is a Nagios status monitor which takes place in systray or on desktop (GNOME, KDE, Windows) as floating statusbar to inform you in realtime about the status of your Nagios and derivatives monitored network. It allows to connect to multiple Nagios, Icinga, Opsview, Op5Monitor, Checkmk/Multisite, Centreon and Thruk servers.',
+      description='SMHUB status monitor for desktop',
+      long_description='SMHstamon is a SMHUB status monitor which takes place in systray or on desktop (GNOME, KDE, Windows) as floating statusbar to inform you in realtime about the status of your SMHUB interfaces. SMHstamon is a fork of Nagstamon.',
       classifiers=CLASSIFIERS,
-      author='Henri Wahl',
-      author_email='henri@nagstamon.de',
-      url='https://nagstamon.de',
-      download_url='https://nagstamon.de/download',
+      author='Simone De Luca',
+      author_email='simone.deluca@retelit.it',
+      url='https://github.com/delu86/SMHstamon',
+      download_url='https://github.com/delu86/SMHstamon/releases',
       scripts=[NAGSTAMON_SCRIPT],
       packages=['Nagstamon',
                 'Nagstamon.QUI',
