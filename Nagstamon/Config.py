@@ -127,10 +127,10 @@ class AppInfo(object):
     NAME = 'SMHstamon'
     VERSION = '0.1'
     WEBSITE = 'https://smhub.retelit.it/'
-    COPYRIGHT = '2022 Simone De Luca'
+    COPYRIGHT = '2023 Manuel Bolzoni'
     COMMENTS = 'SMHUB status monitor for your desktop'
     # dict of servers to offer for downloads if an update is available
-    DOWNLOAD_SERVERS = {'nagstamon.de': 'https://github.com/HenriWahl/Nagstamon/releases'}
+    DOWNLOAD_SERVERS = {'nagstamon.de': 'https://github.com/manuelbolzoni/SMHstamon/releases'}
     # version URL depends on version string
     if 'alpha' in VERSION.lower() or \
         'beta' in VERSION.lower() or \
