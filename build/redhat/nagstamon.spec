@@ -9,7 +9,7 @@ Summary:  SMHUB status monitor for desktop
 
 License:  GPLv2+
 URL:      https://smhub.retelit.it
-Source0:  https://github.com/delu86/SMHstamon/archive/%{commit}/nagstamon-%{commit}.tar.gz
+Source0:  https://github.com/manuelbolzoni/SMHstamon/archive/%{commit}/nagstamon-%{commit}.tar.gz
 
 BuildArch:     noarch
 BuildRequires: python3-devel
@@ -33,11 +33,9 @@ Requires:      qt5-qtsvg
 Requires:      qt5-qtmultimedia
 
 %description
-Nagstamon is a Nagios status monitor which takes place in system tray
+SMHstamon is a SMHUB status monitor which takes place in system tray
 or on desktop (GNOME, KDE, Windows) as floating status bar to inform
-you in real-time about the status of your Nagios and derivatives
-monitored network. It allows to connect to multiple Nagios, Icinga,
-Opsview, Op5Monitor, Checkmk/Multisite, Centreon and Thruk servers.
+you in real-time about the status of your SMHUB interface.
 
 %prep
 %setup -qn Nagstamon-%{commit}
@@ -76,5 +74,5 @@ desktop-file-install --dir %{buildroot}/%{_datadir}/applications\
 %{python3_sitelib}/%{name}*.egg-info
 
 %changelog
-* Sun Jun 05 2016 Momcilo Medic <fedorauser@fedoraproject.org> 2.0-0.1.20160602git7139844
+* Manuel Bolzoni <manuel.bolzoni@retelit.it> Mon 16 Jan 2023 22:00:00 +0100
 - Initial .spec file
