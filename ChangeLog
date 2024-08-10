@@ -1,6 +1,6 @@
-smhstamon (0.1) stable; urgency=low
+smhstamon (0.2) stable; urgency=low
 
-  * Initial release.
-0.2    Change domain to Alveo
+0.1    Initial release.
+0.2    Change domain to Alveo.
 
  -- Manuel Bolzoni <manuel.bolzoni@alveo.it> Sat, 10 Aug 2024 21:00:00 +0100
