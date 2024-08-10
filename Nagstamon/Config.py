@@ -125,9 +125,9 @@ class AppInfo(object):
         contains app information previously located in GUI.py
     """
     NAME = 'SMHstamon'
-    VERSION = '0.1'
-    WEBSITE = 'https://smhub.retelit.it/'
-    COPYRIGHT = '2023 Manuel Bolzoni'
+    VERSION = '0.2'
+    WEBSITE = 'https://smhub.alveo.it/'
+    COPYRIGHT = '2024 Manuel Bolzoni'
     COMMENTS = 'SMHUB status monitor for your desktop'
     # dict of servers to offer for downloads if an update is available
     DOWNLOAD_SERVERS = {'nagstamon.de': 'https://github.com/manuelbolzoni/SMHstamon/releases'}
