@@ -87,7 +87,7 @@ Section: net
 Priority: optional
 Architecture: all
 Maintainer: Manuel Bolzoni <manuel.bolzoni@alveo.it>
-Depends: python3, python3-bs4, python3-dateutil, python3-keyring, python3-lxml, python3-psutil, python3-pyqt6, python3-pyqt6.qtsvg, python3-pyqt6.qtmultimedia, python3-requests, python3-socks
+Depends: python3, python3-bs4, python3-dateutil, python3-keyring, python3-lxml, python3-psutil, python3-pyqt6, pyqt6-dev-tools, python3-pyqt6.qtsvg, python3-pyqt6.qtmultimedia, python3-requests, python3-socks
 Homepage: https://github.com/manuelbolzoni/SMHstamon
 Description: SMHUB status monitor for your desktop
  Monitor multiple SMHUB JSON API endpoints from the system tray or desktop.
@@ -107,7 +107,7 @@ License: GPL-2.0-or-later
 URL: https://github.com/manuelbolzoni/SMHstamon
 BuildArch: noarch
 AutoReqProv: no
-Requires: python3, python3-beautifulsoup4, python3-dateutil, python3-keyring, python3-lxml, python3-psutil, python3-qt6, python3-requests, python3-pysocks
+Requires: python3, python3-beautifulsoup4, python3-dateutil, python3-keyring, python3-lxml, python3-psutil, python3-pyqt6, python3-requests, python3-pysocks
 
 %description
 Monitor multiple SMHUB JSON API endpoints from the system tray or desktop.

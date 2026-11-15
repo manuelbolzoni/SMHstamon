@@ -46,6 +46,7 @@ jobs:
           Expand-Archive dist/release/*-win64.zip -DestinationPath dist/smoke
           $exe = (Resolve-Path dist/smoke/SMHstamon/SMHstamon.exe).Path
           $config = Join-Path $env:RUNNER_TEMP 'smhstamon-smoke'
+          New-Item -ItemType Directory -Force $config | Out-Null
           $process = Start-Process -FilePath $exe -ArgumentList $config -WindowStyle Hidden -PassThru
           try {
             Start-Sleep -Seconds 10
@@ -68,6 +69,7 @@ jobs:
       - name: Install and smoke test DEB
         run: |
           sudo apt-get install -y ./dist/release/*.deb
+          mkdir -p "$RUNNER_TEMP/smhstamon-smoke"
           set +e
           QT_QPA_PLATFORM=offscreen xvfb-run -a timeout 10s smhstamon "$RUNNER_TEMP/smhstamon-smoke" > dist/smoke.log 2>&1
           result=$?
