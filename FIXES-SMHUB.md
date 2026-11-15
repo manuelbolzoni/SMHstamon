@@ -58,8 +58,8 @@ Le risposte HTTP sono simulate. Il test usa una configurazione temporanea e un
 keyring nullo, senza modificare la configurazione personale.
 
 Il test GUI falliva prima della correzione con l'AttributeError sopra riportato.
-Non sono state testate API SMHUB di produzione o generato un nuovo eseguibile.
-Nessuna modifica pubblicata su GitHub.
+Le API SMHUB di produzione non sono state testate. La pipeline della release 0.3
+genera e verifica separatamente i pacchetti Windows, DEB e RPM.
 
 ## Aggiornamento interfaccia
 

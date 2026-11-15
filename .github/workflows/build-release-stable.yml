@@ -28,6 +28,7 @@ jobs:
         if: runner.os == 'Linux'
         run: xvfb-run -a python -m unittest discover -s tests -p test_smhub.py -v
   windows:
+    if: github.ref != 'refs/heads/master'
     needs: test
     runs-on: windows-2022
     steps:
@@ -54,12 +55,33 @@ jobs:
           } finally {
             if (-not $process.HasExited) { Stop-Process -Id $process.Id }
           }
+      - name: Smoke test installer
+        shell: pwsh
+        run: |
+          Expand-Archive dist/release/*_setup.zip -DestinationPath dist/setup-smoke
+          $setup = (Get-ChildItem dist/setup-smoke/*.exe).FullName
+          $installed = Join-Path $env:RUNNER_TEMP 'smhstamon-installed'
+          $arguments = @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/TASKS=""', "/DIR=$installed")
+          $installer = Start-Process -FilePath $setup -ArgumentList $arguments -WindowStyle Hidden -Wait -PassThru
+          if ($installer.ExitCode -ne 0) { throw "Installer failed: $($installer.ExitCode)" }
+          $exe = Join-Path $installed 'SMHstamon.exe'
+          if (-not (Test-Path $exe)) { throw 'Installed executable is missing' }
+          $config = Join-Path $env:RUNNER_TEMP 'smhstamon-installed-config'
+          New-Item -ItemType Directory -Force $config | Out-Null
+          $process = Start-Process -FilePath $exe -ArgumentList $config -WindowStyle Hidden -PassThru
+          try {
+            Start-Sleep -Seconds 10
+            if ($process.HasExited) { throw "Installed application exited: $($process.ExitCode)" }
+          } finally {
+            if (-not $process.HasExited) { Stop-Process -Id $process.Id }
+          }
       - uses: actions/upload-artifact@v4
         with:
           name: windows-packages
           path: dist/release/*.zip
           if-no-files-found: error
   linux:
+    if: github.ref != 'refs/heads/master'
     needs: test
     runs-on: ubuntu-24.04
     steps:
