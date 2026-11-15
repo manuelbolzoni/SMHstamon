@@ -25,42 +25,11 @@ import urllib.parse
 
 from collections import OrderedDict
 
-# we need this for uncommon modules
-try:
-    import icinga2api
-    icinga2api_is_available = True
-except:
-    icinga2api_is_available = False
-
-# load all existing server types
-from Nagstamon.Servers.Nagios import NagiosServer
-from Nagstamon.Servers.Centreon import CentreonServer
-from Nagstamon.Servers.Icinga import IcingaServer
-from Nagstamon.Servers.IcingaWeb2 import IcingaWeb2Server
-from Nagstamon.Servers.Multisite import MultisiteServer
-from Nagstamon.Servers.op5Monitor import Op5MonitorServer
-from Nagstamon.Servers.Opsview import OpsviewServer
-from Nagstamon.Servers.Thruk import ThrukServer
-from Nagstamon.Servers.Zabbix import ZabbixServer
-from Nagstamon.Servers.ZabbixProblemBased import ZabbixProblemBasedServer
-from Nagstamon.Servers.Livestatus import LivestatusServer
-from Nagstamon.Servers.Zenoss import ZenossServer
-from Nagstamon.Servers.Monitos3 import Monitos3Server
-from Nagstamon.Servers.Monitos4x import Monitos4xServer
-from Nagstamon.Servers.SnagView3 import SnagViewServer
-from Nagstamon.Servers.Sensu import SensuServer
-from Nagstamon.Servers.SensuGo import SensuGoServer
-from Nagstamon.Servers.Prometheus import PrometheusServer
-from Nagstamon.Servers.Alertmanager import AlertmanagerServer
+# SMHstamon supports only SMHUB. Do not import unused backends and their
+# optional dependencies during startup.
 from Nagstamon.Servers.SMHub import SMHubServer
-
 from Nagstamon.Config import conf
-
 from Nagstamon.Helpers import STATES
-
-# conditional load if module is available
-if icinga2api_is_available is True:
-    from Nagstamon.Servers.Icinga2API import Icinga2APIServer
 
 # dictionary for servers
 servers = OrderedDict()
@@ -225,18 +194,8 @@ def create_server(server=None):
     return new_server
 
 
-# moved registration process here because of circular dependencies
-#servers_list = [CentreonServer, IcingaServer, IcingaWeb2Server, MultisiteServer, NagiosServer,
-#                Op5MonitorServer, OpsviewServer, ThrukServer, ZabbixServer, SensuServer,SMHubServer,
-#                SensuGoServer, LivestatusServer, ZenossServer, Monitos3Server, Monitos4xServer,
-#                SnagViewServer, PrometheusServer, AlertmanagerServer, ZabbixProblemBasedServer]
-# we use these servers conditionally if modules are available only
-servers_list = [SMHubServer]
-#if icinga2api_is_available is True:
-#    servers_list.append(Icinga2APIServer)
-
-for server in servers_list:
-    register_server(server)
+# Register after imports to avoid circular dependencies.
+register_server(SMHubServer)
 
 # create servers
 for server in conf.servers.values():

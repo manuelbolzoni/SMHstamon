@@ -53,19 +53,7 @@ from Nagstamon.Config import (AppInfo,
                               OS_WINDOWS,
                               RESOURCES)
 
-if OS != OS_WINDOWS:
-    # requests_gssapi is newer but not available everywhere
-    try:
-        # extra imports needed to get it compiled on macOS
-        import numbers
-        import gssapi.raw.cython_converters
-        from requests_gssapi import HTTPSPNEGOAuth as HTTPSKerberos
-    except ImportError:
-        from requests_kerberos import HTTPKerberosAuth as HTTPSKerberos
-#else:
-#    # requests_gssapi needs installation of KfW - Kerberos for Windows
-#    # requests_kerberoes doesn't
-#    from requests_kerberos import HTTPKerberosAuth as HTTPSKerberos
+# SMHUB does not require Kerberos authentication or its optional libraries.
 
 # disable annoying SubjectAltNameWarning warnings
 try:

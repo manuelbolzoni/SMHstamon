@@ -125,7 +125,7 @@ class AppInfo(object):
         contains app information previously located in GUI.py
     """
     NAME = 'SMHstamon'
-    VERSION = '0.2'
+    VERSION = '0.3'
     WEBSITE = 'https://smhub.alveo.it/'
     COPYRIGHT = '2024 Manuel Bolzoni'
     COMMENTS = 'SMHUB status monitor for your desktop'

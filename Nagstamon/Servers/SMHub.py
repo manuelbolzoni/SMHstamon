@@ -43,25 +43,31 @@ No authentication required.
             'operating': 'OK',
             'warning': 'WARNING',
             'critical': 'CRITICAL',
-            'unknow': 'UNKNOWN'
+            'unknow': 'UNKNOWN',
+            'unknown': 'UNKNOWN'
         }
 
 
     def _get_status(self):
-        '''Get status from SMHub SERVER'''
+        '''Get status from SMHUB SERVER'''
         # new_hosts dictionary
         self.new_hosts = dict()
         try:
-            result = requests.get(url=self.monitor_url)
+            self.init_HTTP()
+            result = self.session.get(url=self.monitor_url, timeout=self.timeout)
+            result.raise_for_status()
             if(result.status_code==200):
                 json_res = result.json()
                 agents = {k:v for (k,v) in json_res['agents'].items() if v['status'] not in ['disabled','operating']}
                 host_name = json_res['summary']['label'].upper()
                 self.new_hosts[host_name] = GenericHost()
+                self.new_hosts[host_name].name = host_name
+                self.new_hosts[host_name].server = self.name
+                self.new_hosts[host_name].status = 'UP'
                 for agent in agents:
                     service_name = f"{agents[agent]['name'].upper()} ({agents[agent]['component'].upper()})"
                     service_status = agents[agent]["status"]
-                    service_status_info = agents[agent]["notes"].upper()
+                    service_status_info = (agents[agent].get("notes") or "").upper()
                     last_check = dt.datetime.strptime(agents[agent]["lastcheck"], "%H:%M:%S %d/%m/%Y")
                     last_ok = dt.datetime.strptime(agents[agent]["lastok"], "%H:%M:%S %d/%m/%Y")
                     duration = _calc_duration(last_check,last_ok)
@@ -75,13 +81,15 @@ No authentication required.
                         self.new_hosts[host_name].services[service_name].status_information = service_status_info
                         self.new_hosts[host_name].services[service_name].duration = duration
                         
+            else:
+                return Result(result='ERROR', error='Unexpected SMHUB HTTP status: {}'.format(result.status_code),
+                              status_code=result.status_code)
             return Result()
                         
 
 
-        except:
-            import traceback
-            traceback.print_exc(file=sys.stdout)
+        except Exception:
+            self.new_hosts.clear()
 
             # set checking flag back to False
             self.isChecking = False
@@ -90,9 +98,11 @@ No authentication required.
     
 
     def init_HTTP(self):
-        self.session = requests.Session()
-        self.session.auth = NoAuth()
-        self.proxify(self.session)
+        # Reuse one session per server, including configured TLS and proxy settings.
+        # SMHUB API URLs require no HTTP authentication.
+        if self.session is None:
+            self.session = self.create_session()
+            self.session.auth = NoAuth()
         return True
 
 class NoAuth(requests.auth.AuthBase):

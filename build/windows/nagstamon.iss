@@ -1,7 +1,7 @@
 [Setup]
 AppName=SMHstamon
 AppVerName=SMHstamon {#version}
-DefaultDirName={pf}\Nagstamon
+DefaultDirName={autopf}\SMHstamon
 DefaultGroupName=SMHstamon
 AlwaysUsePersonalGroup=false
 ShowLanguageDialog=no
@@ -24,18 +24,18 @@ ArchitecturesAllowed={#archs_allowed}
 ArchitecturesInstallIn64BitMode=x64
 CloseApplications=no
 [Icons]
-Name: {group}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
-Name: {commonstartup}\Nagstamon; Filename: {app}\nagstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
+Name: {group}\SMHstamon; Filename: {app}\SMHstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
+Name: {commonstartup}\SMHstamon; Filename: {app}\SMHstamon.exe; WorkingDir: {app}; IconFilename: {app}\resources\smhstamon.ico; IconIndex: 0
 [Files]
 Source: "*"; DestDir: {app}; Flags: recursesubdirs createallsubdirs ignoreversion; BeforeInstall: KillRunningNagstamon()
 [Tasks]
-Name: RunAfterInstall; Description: Run Nagstamon after installation
+Name: RunAfterInstall; Description: Run SMHstamon after installation
 [Run]
-Filename: {app}\nagstamon.exe; Flags: shellexec skipifsilent nowait; Tasks: RunAfterInstall
+Filename: {app}\SMHstamon.exe; Flags: shellexec skipifsilent nowait; Tasks: RunAfterInstall
 [Code]
 procedure KillRunningNagstamon();
 var
   ReturnCode: Integer;
 begin
-    Exec(ExpandConstant('taskkill.exe'), '/f /t /im nagstamon.exe', '', SW_HIDE, ewWaitUntilTerminated, ReturnCode);
+    Exec(ExpandConstant('taskkill.exe'), '/f /t /im SMHstamon.exe', '', SW_HIDE, ewWaitUntilTerminated, ReturnCode);
 end;

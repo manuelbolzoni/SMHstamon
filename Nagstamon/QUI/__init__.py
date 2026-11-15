@@ -2717,7 +2717,7 @@ class TopArea(QWidget):
         self.hbox.addWidget(self.label_version)
         self.hbox.addWidget(self.label_empty_space)
         self.hbox.addWidget(self.combobox_servers)
-        self.hbox.addWidget(self.button_filters)
+        self.button_filters.hide()
         self.hbox.addWidget(self.button_recheck_all)
         self.hbox.addWidget(self.button_refresh)
         self.hbox.addWidget(self.button_settings)
@@ -2995,7 +2995,6 @@ class ServerVBox(QVBoxLayout):
             hide all items in server vbox
         """
         self.label.hide()
-        self.button_monitor.hide()
         #self.button_hosts.hide()
         #self.button_services.hide()
         #self.button_history.hide()
@@ -3015,7 +3014,6 @@ class ServerVBox(QVBoxLayout):
             delete VBox and its children
         """
         for widget in (self.label,
-                       self.button_monitor,
                        #self.button_hosts,
                        #self.button_services,
                        #self.button_history,
@@ -4937,6 +4935,14 @@ class Dialog_Settings(Dialog):
                                     self.window.input_spinbox_defaults_acknowledge_expire_duration_minutes]
 
     def initialize(self):
+        # Keep the original page mapping for existing shortcut callers. Removed
+        # pages retain their widgets so loading/saving old settings stays compatible.
+        if not hasattr(self, '_settings_pages'):
+            tabs = self.window.tabs
+            self._settings_pages = tuple(tabs.widget(i) for i in range(tabs.count()))
+            for page in (self.window.tab_filters, self.window.tab_actions,
+                         self.window.tab_defaults):
+                tabs.removeTab(tabs.indexOf(page))
         # apply configuration values
         # start with servers tab
         self.window.tabs.setCurrentIndex(0)
@@ -5025,8 +5031,9 @@ class Dialog_Settings(Dialog):
         # tell the world that dialog pops up
         self.show_dialog.emit()
 
-        # jump to requested tab in settings dialog
-        self.window.tabs.setCurrentIndex(tab)
+        # Resolve legacy tab numbers after removing unsupported settings pages.
+        page = self._settings_pages[tab] if 0 <= tab < len(self._settings_pages) else None
+        self.window.tabs.setCurrentIndex(max(0, self.window.tabs.indexOf(page)))
 
         # reset window if only needs smaller screen estate
         self.window.adjustSize()
@@ -6774,7 +6781,7 @@ class Dialog_About(Dialog):
         self.window.vbox_about.insertWidget(1, logo, 0, Qt.AlignmentFlag.AlignHCenter)
         # update version information
         self.window.label_nagstamon.setText('<h1>{0} {1}</h1>'.format(AppInfo.NAME, AppInfo.VERSION))
-        self.window.label_nagstamon_long.setText('<h2>SMHub status monitor for your desktop</2>')
+        self.window.label_nagstamon_long.setText('<h2>SMHUB status monitor for your desktop</2>')
         self.window.label_copyright.setText(AppInfo.COPYRIGHT)
         self.window.label_website.setText('<a href={0}>{0}</a>'.format(AppInfo.WEBSITE))
         self.window.label_website.setOpenExternalLinks(True)
